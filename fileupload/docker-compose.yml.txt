@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "192.168.137.131:5000:5000"  # Explizite IP-Bindung
+    volumes:
+      - ./uploads:/uploads
+    restart: unless-stopped
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    ports:
+      - "192.168.137.131:8080:8080"  # Gleiches für cAdvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
