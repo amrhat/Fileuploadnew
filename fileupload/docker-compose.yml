@@ -11,7 +11,7 @@ services:
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
     ports:
-      - ":80808080"  # Gleiches für cAdvisor
+      - ":8080:8080"  # Gleiches für cAdvisor
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
